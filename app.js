@@ -102,7 +102,7 @@ app.post('/events', (req, res) => {
             //ADICIONAR HOST AO HOSTGROUP PEER UNREGISTRY
             const hostgroup_set = {
               "jsonrpc": "2.0",
-              "method": "hostgroup.massremove",
+              "method": "hostgroup.massadd",
               "params": {
                 "groups": [
                   {
