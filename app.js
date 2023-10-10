@@ -18,6 +18,7 @@ companies.push(company1);
 // Rota para receber o webhook
 app.post('/events', (req, res) => {
   const { events_tags} = req.body;
+  console.log(typeof(events_tags))
 
   events_tags = JSON.parse(events_tags)
   // EVENT PEER_UNREGISTRY
