@@ -130,6 +130,8 @@ app.post('/events', (req, res) => {
                   response_hostgroup_set
                 }
                 res.json(msg)
+                console.log(msg)
+
               })
               .catch(error => {
                 console.error(`Erro ao inserir grupo: ${error}`);
@@ -250,6 +252,8 @@ app.post('/events', (req, res) => {
               message: 'Dados recebidos e processados com sucesso!'
             }
 
+
+
             //REMOVER HOST DO HOSTGROUP PEER UNREGISTRY
             const hostgroup_set = {
               "jsonrpc": "2.0",
@@ -277,6 +281,7 @@ app.post('/events', (req, res) => {
                   response_hostgroup_set
                 }
                 res.json(msg)
+                console.log(msg)
               })
               .catch(error => {
                 console.error(`Erro ao inserir grupo: ${error}`);
