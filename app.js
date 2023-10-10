@@ -130,43 +130,13 @@ app.post('/events', (req, res) => {
                   response_hostgroup_set
                 }
                 res.json(msg)
-                console.log(msg)
+                console.log("unregister: ", msg)
 
               })
               .catch(error => {
                 console.error(`Erro ao inserir grupo: ${error}`);
                 res.status(500).json({ error: 'Ocorreu um erro ao processar a requisição.' });
               });
-
-
-            // //ATUALIZAÇÕES DO HOST SE NECESSARIO
-            // hostgroups.push({ 'groupid': peer_unregistry_hostgroup_id } )
-            // const host_set = {
-            //     jsonrpc: '2.0',
-            //     method: 'host.update',
-            //     "params": {
-            //         "hostid": host_id,
-            //         "host": "Teste"
-            //     },
-            //     id: 1,
-            //     auth: obj.token
-            //   }
-
-
-            // axios.post(url, host_set, {
-            //     headers: {
-            //       'Content-Type': 'application/json-rpc'
-            //     }
-            //   })
-            // .then(response => {
-            //     const response_host_set = response.data;
-            //     msg = {...msg,response_host_set}
-            //     res.json(msg)
-            // })
-            // .catch(error => {
-            //     console.error(`Erro ao inserir grupo: ${error}`);
-            //     res.status(500).json({ error: 'Ocorreu um erro ao processar a requisição.' });
-            // });
 
           })
           .catch(error => {
@@ -281,7 +251,7 @@ app.post('/events', (req, res) => {
                   response_hostgroup_set
                 }
                 res.json(msg)
-                console.log(msg)
+                console.log("register: ", msg)
               })
               .catch(error => {
                 console.error(`Erro ao inserir grupo: ${error}`);
