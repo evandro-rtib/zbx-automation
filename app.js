@@ -17,12 +17,13 @@ companies.push(company1);
 
 // Rota para receber o webhook
 app.post('/events', (req, res) => {
-  const { events_tags} = req.body;
+  const { events_tags } = req.body;
+  console.log(events_tags)
   console.log(typeof(events_tags))
 
-  events_tags = JSON.parse(events_tags)
+  //events_tags = JSON.parse(events_tags)
   // EVENT PEER_UNREGISTRY
-  console.log(events_tags)
+  
   // Chamada à API do Zabbix
   let host = events_tags.find(h => h.host)
   let company_id = events_tags.find(h => h.company_id)
