@@ -25,6 +25,7 @@ app.post('/events', (req, res) => {
   let host = events_tags.find(h => h.host)
   let company_id = events_tags.find(h => h.company_id)
   console.log(host,company_id)
+  
 
   let obj = companies.find(company => company.company_id === company_id);
   let peer_unregistry_hostgroup_name=obj.peer_unregistry_hostgroup_name
