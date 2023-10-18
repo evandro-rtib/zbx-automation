@@ -17,17 +17,26 @@ companies.push(company1);
 
 // Rota para receber o webhook
 app.post('/events', (req, res) => {
-  const { events_tags, company_id, host } = req.body;
-  const filter_events_tags = /type_event:(.*?)@/;
-  const match = filter_events_tags.exec(events_tags);
-  let type_event
-
-  if (match !== null) {
-    type_event = match[1];
+  const { events_tags, company_id, host ,msg} = req.body;
+  const filter_events_tags = /event_type:(.*?)@/;
+  const match_events_tags = filter_events_tags.exec(events_tags);
+  let event_type
+  if (match_events_tags !== null) {
+    event_type = match_events_tags[1];
   }
 
+  const filter_problem_type = /problem_type=(\d+)/;
+  const match_problem_type = filter_problem_type.exec(msg);
+  let problem_type
+  if (match_problem_type !== null) {
+    problem_type = parseInt(match_problem_type[1], 10);
+  }
+
+  console.log("dado recebido:",req.body)
+  console.log("event_type:",event_type)
+  console.log("problem_type:",problem_type)
   // EVENT PEER_UNREGISTRY
-  if (type_event == 'peer_unregistry') {
+  if (event_type == 'peer_unregistry' && problem_type == 0) {
     let obj = companies.find(company => company.company_id == company_id);
     let peer_unregistry_hostgroup_name = obj.peer_unregistry_hostgroup_name
     let host_id
@@ -151,7 +160,7 @@ app.post('/events', (req, res) => {
   }
 
   // EVENT PEER_REGISTRY
-  else if (type_event == 'peer_registry') {
+  else if (event_type == 'peer_unregistry' && problem_type==1) {
     let obj = companies.find(company => company.company_id == company_id);
     let peer_unregistry_hostgroup_name = obj.peer_unregistry_hostgroup_name
     let host_id
